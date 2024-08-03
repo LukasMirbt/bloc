@@ -20,7 +20,6 @@ void main() {
     setUp(() {
       appBloc = MockAppBloc();
       user = MockUser();
-      when(() => user.isNotEmpty).thenReturn(true);
       when(() => user.email).thenReturn('test@gmail.com');
       when(() => appBloc.state).thenReturn(
         AppState(user: user, status: AppStatus.authenticated),
