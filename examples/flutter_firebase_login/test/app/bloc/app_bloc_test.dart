@@ -23,6 +23,7 @@ void main() {
       when(
         () => authenticationRepository.currentUser,
       ).thenReturn(User.empty);
+      when(() => user.isNotEmpty).thenReturn(false);
     });
 
     AppBloc buildBloc() {
