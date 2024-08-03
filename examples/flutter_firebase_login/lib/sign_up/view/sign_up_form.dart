@@ -47,7 +47,7 @@ class _EmailInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('signUpForm_emailInput_textField'),
-          onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
+          onChanged: context.read<SignUpCubit>().emailChanged,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: 'email',
@@ -69,8 +69,7 @@ class _PasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('signUpForm_passwordInput_textField'),
-          onChanged: (password) =>
-              context.read<SignUpCubit>().passwordChanged(password),
+          onChanged: context.read<SignUpCubit>().passwordChanged,
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'password',
@@ -94,9 +93,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('signUpForm_confirmedPasswordInput_textField'),
-          onChanged: (confirmPassword) => context
-              .read<SignUpCubit>()
-              .confirmedPasswordChanged(confirmPassword),
+          onChanged: context.read<SignUpCubit>().confirmedPasswordChanged,
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'confirm password',
@@ -127,7 +124,7 @@ class _SignUpButton extends StatelessWidget {
                   backgroundColor: Colors.orangeAccent,
                 ),
                 onPressed: state.isValid
-                    ? () => context.read<SignUpCubit>().signUpFormSubmitted()
+                    ? context.read<SignUpCubit>().signUpFormSubmitted
                     : null,
                 child: const Text('SIGN UP'),
               );

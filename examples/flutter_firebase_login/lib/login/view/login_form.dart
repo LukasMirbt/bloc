@@ -58,7 +58,7 @@ class _EmailInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_emailInput_textField'),
-          onChanged: (email) => context.read<LoginCubit>().emailChanged(email),
+          onChanged: context.read<LoginCubit>().emailChanged,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: 'email',
@@ -80,8 +80,7 @@ class _PasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_passwordInput_textField'),
-          onChanged: (password) =>
-              context.read<LoginCubit>().passwordChanged(password),
+          onChanged: context.read<LoginCubit>().passwordChanged,
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'password',
@@ -111,7 +110,7 @@ class _LoginButton extends StatelessWidget {
                   backgroundColor: const Color(0xFFFFD600),
                 ),
                 onPressed: state.isValid
-                    ? () => context.read<LoginCubit>().logInWithCredentials()
+                    ? context.read<LoginCubit>().logInWithCredentials
                     : null,
                 child: const Text('LOGIN'),
               );
@@ -137,7 +136,7 @@ class _GoogleLoginButton extends StatelessWidget {
         backgroundColor: theme.colorScheme.secondary,
       ),
       icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
-      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
+      onPressed: context.read<LoginCubit>().logInWithGoogle,
     );
   }
 }
